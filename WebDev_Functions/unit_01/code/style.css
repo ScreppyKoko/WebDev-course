@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+}
+
+html, body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+}
+
+a {
+    color: #3f8efc;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.out-1 {
+    width: 100px;
+    height: 100px;
+    background: orangered;
+}

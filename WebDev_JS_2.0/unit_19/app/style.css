@@ -1,0 +1,14 @@
+.text-center {
+    text-align: center;
+}
+.block {
+    width: 75px;
+    height: 75px;
+    float: left;
+    margin: 25px;
+    border: 2px solid #333;
+}
+
+hr {
+    clear: both;
+}
