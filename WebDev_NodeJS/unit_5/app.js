@@ -34,4 +34,4 @@ let obj = {
     one: 1,
     two: 'Hello'
 }
-console.log(obj)
+console.log(obj);
