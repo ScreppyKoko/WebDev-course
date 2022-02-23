@@ -1,25 +1,28 @@
+const fs = require('fs');  // подключаем встроенный модуль для работы с файлами
+const path = require('path'); // подключаем встроенный модуль в котором набор функций для работы с путями в файловой системе.
+
 // Task 1
 // Напишите функцию t1, которая  выводит содержимое файла t1.txt в папке home6. Помимо вывода функци должна возвращать данное значение.
-const fs = require('fs');
-const path = require('path');
 
 function t1() {
     fs.readFile('home6/t1.txt', 'utf-8', (err, data) => {
-        return console.log(data)
+        console.log(data)
+        return data;
     });
 }
-
 console.log(t1());
 
 
 // Task 2.
 
-// Напишите функцию t2, которая  выводит содержимое файла указанного в параметрах файла. Помимо вывода функци должна возвращать данное значение.
+// Напишите функцию t2, которая  выводит содержимое файла указанного в параметрах файла.
+// Помимо вывода функци должна возвращать данное значение.
 
 
 function t2(filePath) {
     fs.readFile(`home6/${filePath}`, 'utf-8', (err, data) => {
-        return console.log(data)
+        console.log(data)
+        return data;
     })
 }
 
@@ -32,7 +35,8 @@ console.log(t2(filePath));
 
 function t3(folderName) {
     fs.readdir(folderName, (err, data) => {
-        return console.log(data)
+        console.log(data)
+        return data;
     })
 }
 
@@ -46,8 +50,9 @@ function t4(filepath) {
     fs.readdir('home6', (err, data) => {
         data.forEach(file => {
             if (file === filepath) {
-                let fileSize = fs.statSync('home6/' + file).size;
-                return console.log(fileSize / 1000)
+                let fileSize = (fs.statSync('home6/' + file).size) / 1000;
+                console.log(fileSize);
+                return fileSize;
             }
         })
     })
@@ -71,9 +76,6 @@ function t5(a) {
     else return a / 1000000 + 'MB'
 }
 
-console.log(t5(8988989));
-
-
 // Task 6
 // Напишите функцию t6 которая выводит содержимое папки. В одной строке выводится имя файла, пробел его размер
 // ( используем t5) перенос строки.
@@ -95,7 +97,9 @@ t6('home6');
 
 function t7(exPath) {
     fs.readdir(exPath, (err, data) => {
-        return console.log(path.extname(exPath));
+        let fileExtension = path.extname(exPath)
+        console.log(fileExtension);
+        return fileExtension;
     })
 }
 
@@ -109,13 +113,14 @@ function t8(exPath) {
         let sumFileSize = 0;
         data.forEach(file => {
             let fileSize = fs.statSync(`${exPath}/` + file).size;
-            sumFileSize += fileSize
+            sumFileSize += fileSize;
         })
-        return console.log(sumFileSize)
+        console.log(sumFileSize);
+        return sumFileSize;
     })
 }
 
-t8('home6');
+console.log(t8('home6'));
 
 
 // Task 9
@@ -123,22 +128,24 @@ t8('home6');
 // Функция должна возвращать true или false.
 
 function t9(folder, file) {
-    fs.readdir(folder, (err, data) => {
-        data.forEach(item => {
-            console.log(item + 11111111111111111)
-        })
-    })
+    const path = `${folder}/${file}`
+    return fs.existsSync(path)
 }
 
-console.log(t9('home6', 't1.txt'));
+console.log(t9('home6', 'app.js'));
 
 // Task 10
 // Создайте функцию t10, которая принимает имя файла и которая возвращает false если файла нет в текущей папке
 // или его размер равен нулю и размер файла если он существует и его размер больше нуля.
 
 function t10(a) {
-
+    let exist = fs.existsSync(`${__dirname}/${a}`);
+    if (exist) {
+        let size = fs.statSync(`${__dirname}/${a}`).size;
+        if (size !== 0) return true;
+    }
+    return false;
 }
 
-console.log(t10('filename'));
+console.log(t10('./home6/t1.txt'));
 
