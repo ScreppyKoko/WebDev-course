@@ -1,48 +1,47 @@
-let xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200) {
-        succesRequest(this.responseText);
-    }
-};
+const xhttp = new XMLHttpRequest();
 
-function succesRequest(data) {
-    console.log(data);
+function succesConnect(output, way, method = 'GET') {
+   xhttp.onreadystatechange = function () {
+      if (this.readyState === 4 && this.status === 200) {
+         document.querySelector(output).textContent = this.responseText;
+      }
+   };
+   xhttp.open(method, "http://getpost.itgid.info/index2.php?auth=7859d9d42a8834141d529577207c9596" + way, true);
+   if (method === "POST") {
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send("http://getpost.itgid.info/index2.php?auth=7859d9d42a8834141d529577207c9596" + way);
+   } else {
+      xhttp.send();
+   }
 }
 
-xhttp.open("GET", "http://getpost.itgid.info/index2.php?auth=7859d9d42a8834141d529577207c9596&action=1", true);
-xhttp.send();
-
-// function t10() {
-//     let a10 = { name: 'ivan', age: 15, sex: 1, id: 45 };
-//     a10_res = '?' + new URLSearchParams(a10);
-//     document.querySelector('.out-10').textContent = a10_res;
-// }
-
-// document.querySelector('.b-10').onclick = t10;
-
+function startByButton(selector, func) {
+   document.querySelector(selector).addEventListener('click', func);
+}
 
 // Task 1 ============================================
-/* Отправьте GET запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 1. Выведите в out-1 результат. Запускаться функция должна по нажатию b-1. */
+/* Отправьте GET запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 1. Выведите в out-1 результат. 
+Запускаться функция должна по нажатию b-1. */
 // ключ авторизации 7859d9d42a8834141d529577207c9596
 
-
 function t1() {
-
+   succesConnect('.out-1', '&action=1');
 }
 
-
-
 // ваше событие здесь!!!
+startByButton('.b-1', t1);
+
 
 // Task 2 ============================================
 /* Отправьте GET запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 2. Добавьте параметр name с вашим именем на латинице. 
 Если все сделано верно, сервер пришлет строку hello ваше имя. Выведите в out-2 результат. Запускаться функция должна по нажатию b-2. */
 
 function t2() {
-
+   succesConnect('.out-2', '&action=2&name=Alex');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-2', t2);
 
 
 // Task 3 ============================================
@@ -50,10 +49,11 @@ function t2() {
 Если все сделано верно, сервер вернет сумму чисел.  Выведите в out-3 результат. Запускаться функция должна по нажатию b-3. */
 
 function t3() {
-
+   succesConnect('.out-3', '&action=3&num1=2&num2=3');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-3', t3);
 
 
 // Task 4 ============================================
@@ -62,30 +62,35 @@ function t3() {
 Запускаться функция должна по нажатию b-4. */
 
 function t4() {
-
+   succesConnect('.out-4', '&action=4&num1=2&num2=3');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-4', t4);
 
 // Task 5 ============================================
 /*  Отправьте GET запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 5. Если все сделано верно, сервер вернет текущее время и дату. 
 Не забывайте указывать параметр auth (ключ в чате). Выведите в out-5 результат. Запускаться функция должна по нажатию b-5. */
 
 function t5() {
-
+   succesConnect('.out-5', '&action=5');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-5', t5);
+
 
 // Task 6 ============================================
 /*  Отправьте GET запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 6. Добавьте параметр num1 и num2 содержащие числа. 
 Если все сделано верно, сервер вернет большее число. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-6 результат. Запускаться функция должна по нажатию b-6. */
 
 function t6() {
-
+   succesConnect('.out-6', '&action=6&num1=22&num2=3');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-6', t6);
+
 
 
 // Task 7 ============================================
@@ -93,20 +98,24 @@ function t6() {
 Не забывайте указывать параметр auth (ключ в чате). Выведите в out-7 результат. Запускаться функция должна по нажатию b-7. */
 
 function t7() {
-
+   succesConnect('.out-7', '&action=7');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-7', t7);
+
 
 // Task 8 ============================================
 /* Отправьте GET запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 8. В качестве параметра по очереди укажите year равный году вашего рождения. 
 Если все правильно сервер вернет ваш возраст. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-8 результат. Запускаться функция должна по нажатию b-8.*/
 
 function t8() {
-
+   succesConnect('.out-8', '&action=8&year=1995');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-8', t8);
+
 
 
 // Task 9 ============================================
@@ -114,10 +123,12 @@ function t8() {
 Если все сделано верно, сервер возвратит дату или месяц или год. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-9 результат. Запускаться функция должна по нажатию b-9. */
 
 function t9() {
-
+   succesConnect('.out-9', '&action=9&y=1');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-9', t9);
+
 
 
 // Task 10 ============================================
@@ -127,27 +138,35 @@ function t9() {
 */
 
 function t10() {
-
+   succesConnect('.out-10', '&action=1', 'POST');
 }
+
+startByButton('.b-10', t10);
+
+
 // Task 11 ============================================
 /*  Отправьте POST запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 2. Добавьте параметр name с вашим именем на латинице. 
 Если все сделано верно, сервер пришлет строку hello ваше имя. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-11 результат. Запускаться функция должна по нажатию b-11. */
 
 function t11() {
-
+   succesConnect('.out-11', '&action=2&name=Alex', 'POST');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-11', t11);
+
 
 // Task 12 ============================================
 /*  Отправьте POST запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 3. Добавьте параметр num1 и num2 содержащие числа. 
 Если все сделано верно, сервер вернет сумму чисел. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-12 результат. Запускаться функция должна по нажатию b-12.*/
 
 function t12() {
-
+   succesConnect('.out-12', '&action=3&num1=4&num2=3', 'POST');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-12', t12);
+
 
 // Task 13 ============================================
 /*  Отправьте POST запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 4. Добавьте параметр num1 и num2 содержащие числа. 
@@ -155,57 +174,68 @@ function t12() {
 Запускаться функция должна по нажатию b-13.*/
 
 function t13() {
-
+   succesConnect('.out-13', '&action=4&num1=1&num2=8', 'POST');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-13', t13);
+
 
 // Task 14 ============================================
 /*  Отправьте POST запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 5. Если все сделано верно, сервер вернет текущее время и дату. 
 Не забывайте указывать параметр auth (ключ в чате). Выведите в out-14 результат. Запускаться функция должна по нажатию b-14.*/
 
 function t14() {
-
+   succesConnect('.out-14', '&action=5', 'POST');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-14', t14);
+
 
 // Task 15============================================
 /*  Отправьте POST запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 6. Добавьте параметр num1 и num2 содержащие числа. 
 Если все сделано верно, сервер вернет большее число. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-15 результат. Запускаться функция должна по нажатию b-15. */
 
 function t15() {
-
+   succesConnect('.out-15', '&action=6&num1=2&num2=5', 'POST');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-15', t15);
+
 
 // Task 16 ============================================
 /*  Отправьте POST запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 7. Если все сделано верно, сервер случайную ссылку на изображение. 
 Не забывайте указывать параметр auth (ключ в чате). Выведите в out-16 результат. Запускаться функция должна по нажатию b-16. */
 
 function t16() {
-
+   succesConnect('.out-16', '&action=7', 'POST');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-16', t16);
+
 
 // Task 17 ============================================
 /*  Отправьте POST запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 8. В качестве параметра по очереди укажите year равный году вашего рождения. 
 Если все правильно сервер вернет ваш возраст. Не забывайте указывать параметр auth (ключ в чате).Выведите в out-17 результат. Запускаться функция должна по нажатию b-17. */
 
 function t17() {
-
+   succesConnect('.out-17', '&action=8&year=1995', 'POST');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-17', t17);
+
 
 // Task 18 ============================================
 /*  Отправьте POST запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 9. В качестве параметра по очереди укажите m = 1, d=1, y=1. 
 Если все сделано верно, сервер возвратит дату или месяц или год. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-18 результат. Запускаться функция должна по нажатию b-18. */
 
 function t18() {
-
+   succesConnect('.out-18', '&action=9&y=1', 'POST');
 }
 
 // ваше событие здесь!!!
+startByButton('.b-18', t18);
