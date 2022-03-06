@@ -1,5 +1,6 @@
 const http = require('http');
-
+const url = require('url');
+const { parse } = require('querystring');
 
 const t2 = (req, res) => {
 
@@ -17,7 +18,8 @@ const t5 = (req, res) => {
 
 }
 
+
 http.createServer((req, res) => {
-
-
-}).listen(3000);
+    console.log('server work');
+    res.end('work');
+}).listen(3002);

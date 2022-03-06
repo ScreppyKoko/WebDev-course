@@ -7,7 +7,8 @@ xhttp.onreadystatechange = function () {
     }
 }
 //CORS
-xhttp.open("GET", "http://getpost.itgid.info/index2.php?auth=zhrgB3DxC8LoG7Gcilzg&action=1", true);
+
+xhttp.open("GET", "http://getpost.itgid.info/index2.php?auth=7859d9d42a8834141d529577207c9596&action=1", true);
 xhttp.send();
 
 function myFunction(data) {
@@ -22,7 +23,7 @@ xhttp2.onreadystatechange = function () {
         myFunction2(this.responseText)
     }
 }
-xhttp2.open("POST", "http://getpost.itgid.info/index2.php?auth=zhrgB3DxC8LoG7Gcilzg&action=1", true);
+xhttp2.open("POST", "http://getpost.itgid.info/index2.php?auth=7859d9d42a8834141d529577207c9596&action=1", true);
 
 xhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhttp2.send('auth=zhrgB3DxC8LoG7Gcilzg&action=1')
