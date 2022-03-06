@@ -14,7 +14,6 @@ xhttp.send();
 function myFunction(data) {
     a = data;
     console.log(data);
-
 }
 
 let xhttp2 = new XMLHttpRequest();

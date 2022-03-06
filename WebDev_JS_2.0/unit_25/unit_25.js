@@ -1,10 +1,36 @@
+let xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200) {
+        succesRequest(this.responseText);
+    }
+};
+
+function succesRequest(data) {
+    console.log(data);
+}
+
+xhttp.open("GET", "http://getpost.itgid.info/index2.php?auth=7859d9d42a8834141d529577207c9596&action=1", true);
+xhttp.send();
+
+// function t10() {
+//     let a10 = { name: 'ivan', age: 15, sex: 1, id: 45 };
+//     a10_res = '?' + new URLSearchParams(a10);
+//     document.querySelector('.out-10').textContent = a10_res;
+// }
+
+// document.querySelector('.b-10').onclick = t10;
+
 
 // Task 1 ============================================
 /* Отправьте GET запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 1. Выведите в out-1 результат. Запускаться функция должна по нажатию b-1. */
 // ключ авторизации 7859d9d42a8834141d529577207c9596
 
+
 function t1() {
+
 }
+
+
 
 // ваше событие здесь!!!
 
