@@ -35,3 +35,13 @@ section {
 .active-img {
     border: 3px solid black;
 }
+
+.card-product {
+    text-align: center;
+}
+
+.picture {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+}

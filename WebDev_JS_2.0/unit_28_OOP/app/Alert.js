@@ -1,16 +1,16 @@
 /**
- *  jdjdjdj
+ *  тут должно быть описание класса 
  */
-class Alert {
-    constructor(a, c, d) {
-        this.message = a;
-        this.cssClass = c;
-        this.out = d;
+class Ale {
+    constructor(text, className, selector) {
+        this.message = text;
+        this.cssClass = className;
+        this.output = selector;
     }
-    showAlert() {
-        document.querySelector(this.out).innerHTML = `<p class="${this.cssClass}">${this.message}</p>`;
+    showAle() {
+        document.querySelector(this.output).innerHTML = `<p class="${this.cssClass}">${this.message}</p>`;
     }
     myAlert() {
-        alert(this.message);
+        console.log(this.message);
     }
 }

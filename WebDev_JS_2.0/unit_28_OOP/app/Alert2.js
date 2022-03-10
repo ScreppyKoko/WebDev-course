@@ -1,12 +1,11 @@
-class Alert2 extends Alert {
-    constructor(a, c, d, icon) {
-        super(a, c, d);
-        this.icon = icon; // new proper
+//! наследуемый класс
+
+class AleHeir extends Ale {
+    constructor(text, className, selector, icon) {
+        super(text, className, selector);
+        this.icon = icon;
     }
     showIconAlert() {
-        document.querySelector(this.out).innerHTML = `<p class="${this.cssClass}"><i class="material-icons">${this.icon}</i> ${this.message}</p>`;
-    }
-    myAlert() {
-        alert('hi!!!' + this.message);
+        document.querySelector(this.output).innerHTML = `<p class="${this.cssClass}"><span class="material-icons">${this.icon}</span>${this.message}</p>`;
     }
 }

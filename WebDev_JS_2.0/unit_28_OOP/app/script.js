@@ -1,18 +1,26 @@
-function myAlert(a, c, d) {
-    let b = `<p class="${c}">${a}</p>`;
-    document.querySelector(d).innerHTML = b;
+function myAlert(text, className, selector) {
+    let b = `<p class=${className}>${text}</p>`
+    document.querySelector(selector).innerHTML = b;
 }
 
-myAlert('Hi', 'red', '.test');
-myAlert('Hello', 'orange', '.test2');
+myAlert(
+    'Hello',
+    'red',
+    '.test'
+);
+myAlert(
+    'Yoooowwwww',
+    'orange',
+    '.test2'
+);
 
+// вызов классов
+//* родительский класс
+let m = new Ale('HELLO MTFCR', 'red', '.test');
+console.log(m)
+m.showAle();
 
-// class!!!!!!!!!!!!!!!!!!!!!
-
-let m = new Alert('My message', 'red', '.test');
-console.log(m);
-m.showAlert();
-
-let m2 = new Alert2('My message', 'red', '.test', 'account_balance');
+//* наследник
+let m2 = new AleHeir('HELLO MTFCR', 'red', '.test', 'visibility_off')
 m2.showIconAlert();
-m2.myAlert(this.message);
+m2.myAlert();
