@@ -7,24 +7,24 @@ function f1_1() {
 
 const f1_2 = () => {
     console.log(this);
-}
+};
 
 document.querySelector('.b-1').onclick = () => {
     f1_1(); // ожидаемо теряется this
-}
+};
 document.querySelector('.b-1-2').onclick = () => {
     // теперь передаем this с помощью call
     // вызываем f1_1 и в качестве this передаем b-1
     f1_1.call(document.querySelector('.b-1'));
     // если корректно сделано - то увидите в консоли кнопку b-1
 
-}
+};
 document.querySelector('.b-1-3').onclick = () => {
     // вызываем f1_2 с контектом .b-1-2
     f1_2.call(document.querySelector('.b-1-2'));
     // если вы все сделали верно, то call не помогает
     //Это не влияет на стрелочные функции, потому что у них просто нет this
-}
+};
 
 // ==================================================
 
@@ -32,11 +32,11 @@ document.querySelector('.b-1-3').onclick = () => {
 // Дана функция f2, которая к элементу this применяет background. Запустите данную функцию с помощью call и в качестве контекста задайте блок div-2-1, div-2-2.
 
 function f2() {
-    this.style.background = 'orange'
+    this.style.background = 'orange';
 }
 
-// f2.call();
-// f2.call()
+f2.call(document.querySelector('.div-2-1'));
+f2.call(document.querySelector('.div-2-2'));
 
 // ==================================================
 
@@ -47,21 +47,24 @@ function f3(color) {
     this.style.background = color;
 }
 
-// f3.call();
-// f3.call()
+f3.call(document.querySelector('.div-3-1'), 'red');
+f3.call(document.querySelector('.div-3-2'), 'orangered')
 
 // ==================================================
 
 
 // Task 4
-// Отличия call и apply только в том, что первый аргументы передает через запятую, а второй - массивом. Запустим функцию f4 с помощью apply, и передадим цвет в массиве, для блока div-4-1 это будет ['red'], для блока div-4-2 это будет ['orange'];
+// Отличия call и apply только в том, что первый аргументы передает через запятую, а второй - массивом. Запустим функцию f4 с помощью apply, и передадим цвет в массиве, 
+// для блока div-4-1 это будет ['red'], для блока div-4-2 это будет ['orange'];
 
-function f4(color) {
+function f4(color, shadow, text) {
     this.style.background = color;
+    this.style.boxShadow = shadow;
+    this.textContent = text;
 }
 
-// f4.apply();
-// f4.apply()
+f4.apply(document.querySelector('.div-4-1'), ['red', '0px 0px 7px 5px #11ff11', 111222]);
+f4.apply(document.querySelector('.div-4-2'), ['lime', '0px 0px 5px 3px #111111', 'hello']);
 
 // ==================================================
 
@@ -69,11 +72,11 @@ function f4(color) {
 // В остальном, отличий call и apply нет.  Запустите функцию f5 с помощью apply и в качестве контекста задайте блок div-5-1, div-5-2.
 
 function f5() {
-    this.style.background = 'orange'
+    this.style.background = 'orange';
 }
 
-// f5.apply
-// f5.apply
+f5.apply(document.querySelector('.div-5-1'));
+f5.apply(document.querySelector('.div-5-2'));
 
 // ==================================================
 
@@ -84,25 +87,26 @@ function f6() {
     this.style.background = 'orange'
 }
 
-// let bindF61 = f6.bind()
-// let bindF62 = f6.bind()
+let bindF61 = f6.bind(document.querySelector('.div-6-1'));
+let bindF62 = f6.bind(document.querySelector('.div-6-2'))
 
-// bindF61();
-// bindF62();
+bindF61();
+bindF62();
 
 // ==================================================
 
 // Task 7
-// Научимся применять bind. Создадим новые функции bindF71, bindF72 куда мы добавим функцию f7 с контекстом div-7-1, div-7-2. Запустим эти функции для проверки, в первую передадим параметр orange, а во вторую blue.
+// Научимся применять bind. Создадим новые функции bindF71, bindF72 куда мы добавим функцию f7 с контекстом div-7-1, div-7-2. Запустим эти функции для проверки, 
+// в первую передадим параметр orange, а во вторую blue.
 
 function f7(color) {
     this.style.background = color;
 }
 
-// let bindF71 = f7.bind()
-// let bindF72 = f7.bind()
+let bindF71 = f7.bind(document.querySelector('.div-7-1'), 'orange');
+let bindF72 = f7.bind(document.querySelector('.div-7-2'), 'blue');
 
-// bindF71();
-// bindF72();
+bindF71();
+bindF72();
 
 // ==================================================
