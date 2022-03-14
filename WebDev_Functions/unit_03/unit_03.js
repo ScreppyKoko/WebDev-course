@@ -382,15 +382,10 @@ document.querySelector('.b-24').addEventListener('click', function () {
 
 
 function t25(arr) {
-    let out = '';
     for (let item of arr) {
-        if (typeof item !== 'number') {
-            out = false;
-            break;
-        }
-        else out = true;
+        if (typeof item !== 'number') return false;
     }
-    return out;
+    return true;
 }
 
 document.querySelector('.b-25').addEventListener('click', function () {
@@ -404,10 +399,10 @@ document.querySelector('.b-25').addEventListener('click', function () {
 function t26() {
     let input = document.querySelector('.i-26');
     let output = document.querySelector('.out-26');
+
     if (input.value.trim()) output.textContent = input.value.toLowerCase();
-    else {
-        return false;
-    }
+    else return false;
+
     input.value = '';
 }
 
@@ -424,6 +419,10 @@ const obj27 = {
 };
 
 function t27(v) {
+    for (let key in obj27) {
+        if (obj27[key] === v) return key;
+    }
+    return false;
 }
 
 document.querySelector('.b-27').addEventListener('click', function () {
@@ -436,6 +435,7 @@ document.querySelector('.b-27').addEventListener('click', function () {
 // Напишите функцию которая принимает два аргумента - строку и подстроку и если подстрока есть в строке - возвращает true, если нет false.
 
 function t28(str, substr) {
+    return str.includes(substr);
 }
 
 document.querySelector('.b-28').addEventListener('click', function () {
@@ -446,12 +446,14 @@ document.querySelector('.b-28').addEventListener('click', function () {
 // Напишите функцию, которая получает в качестве аргументов строки и возвращает большую строку (прямым сравнением).
 
 function t29(str1, str2) {
+    if (str1.length > str2.length) return str1;
+    else if (str1.length === str2.length) return 'равны';
+    else return str2;
 }
 
 document.querySelector('.b-29').addEventListener('click', function () {
     document.querySelector('.out-29').textContent = t29('hello', 'orBait');
 });
-
 
 
 // Task 30
@@ -462,8 +464,8 @@ function t31() {
 }
 
 function t30() {
+    return t31();
 }
-
 
 document.querySelector('.b-30').addEventListener('click', function () {
     document.querySelector('.out-30').textContent = t30();
