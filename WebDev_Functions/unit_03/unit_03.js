@@ -389,7 +389,7 @@ function t25(arr) {
 }
 
 document.querySelector('.b-25').addEventListener('click', function () {
-    document.querySelector('.out-25').textContent = t25([4, 1, 2]);
+    document.querySelector('.out-25').textContent = t25([4, "1", 2]);
 });
 
 // Task 26
