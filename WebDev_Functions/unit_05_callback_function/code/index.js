@@ -28,7 +28,7 @@ function showArr2(arr, block) {
 f1(arr1, showArr, out1);
 f1(arr1, showArr2, out2);
 
-// пример коллбека
+//! пример коллбека
 
 function squad(item) {
     return item ** 2;
@@ -39,7 +39,7 @@ const arr2 = arr1.map(item => item ** 2);
 console.log(arr2);
 showArr(arr2, out3);
 
-// Пример с input
+//! Пример с input
 
 document.querySelector('.b-4').addEventListener('click', () => {
     getUserName(fixUserName);
@@ -55,7 +55,7 @@ function fixUserName(str) {
     return str.trim().toLowerCase();
 }
 
-// асинхронные callback функции
+//! асинхронные callback функции
 
 // async function pageLoader(callback) {
 //     const data = await fetch('https://jsonplaceholder.typicode.com/todos/1');
@@ -76,7 +76,8 @@ function fixUserName(str) {
 
 // pageLoader(getAJAX);
 
-// ад callback
+
+//! ад callback
 
 // function pageLoader() {
 //     fetch('https://jsonplaceholder.typicode.com/todos/1')
@@ -88,13 +89,15 @@ function fixUserName(str) {
 //             fetch('https://jsonplaceholder.typicode.com/users/' + json.userId)
 //                 .then(response => response.json())
 //                 .then(json => {
-//                 console.log('Послали запрос на страницу')
-//                 console.log('Ответ сервера: ')
-//                 console.log(json)
-//             });
+//                     console.log('Послали запрос на страницу')
+//                     console.log('Ответ сервера: ')
+//                     console.log(json)
+//                 });
 //         });
 // }
 // pageLoader();
+
+//! избавляемся от 'callbakc hell'
 
 function pageLoader(url, callback) {
     fetch(url)
@@ -109,7 +112,7 @@ function getAJAX(data) {
     pageLoader('https://jsonplaceholder.typicode.com/users/' + data.userId, showUser);
 }
 
-function showUser(user){
+function showUser(user) {
     console.log(user);
 }
 
