@@ -83,7 +83,7 @@ const arr5 = [ [3,4,5], [6,7,10]];
 function t5() {
     let s = 0;
     for (let i = 0; i < arr5.length; i++) {
-       s += sum(arr5[i]);
+    s += sum(arr5[i]);
     }
     return s;
 }

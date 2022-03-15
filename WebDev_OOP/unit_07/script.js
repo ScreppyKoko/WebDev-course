@@ -22,14 +22,14 @@ function f2() {
 }
 const f2_2 = () => {
     console.log(this);
-}
+};
 
 document.querySelector('.b-2').onclick = function () {
     f2();
-}
+};
 document.querySelector('.b-2-2').onclick = () => {
     f2_2();
-}
+};
 
 // ==================================================
 
@@ -59,7 +59,9 @@ document.querySelector('.b-3').onclick = function () {
 // По нажатию кнопки b-4 создайте экземпляр класса Test, передайте ему любое число в качестве параметра a. Выведит в консоль результат работы метода  someMethod() , someMethod2
 
 document.querySelector('.b-4').onclick = () => {
-
+    const test = new Test('1101110 1101111 100000 1110111 1100001 1110010');
+    console.log(test.someMethod());
+    console.log(test.someMethod2());
 }
 
 // ==================================================
@@ -68,7 +70,8 @@ document.querySelector('.b-4').onclick = () => {
 // По нажатию кнопки b-5 выведите в консоль статическое свойство b класса Test и результат работы статического метода staticMethod().
 
 document.querySelector('.b-5').onclick = () => {
-
+    console.log(Test.b);
+    console.log(Test.staticMethod());
 }
 
 // ==================================================
