@@ -1,5 +1,6 @@
 // 'use strict';
-// Function declaration
+
+//! Function declaration
 
 // if (false) {
 //     function f1() {
@@ -14,7 +15,7 @@
 
 // f1();
 
-// function expression
+//! function expression
 
 function f2() {
     console.log(f2.name);
