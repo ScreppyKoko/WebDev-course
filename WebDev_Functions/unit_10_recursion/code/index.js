@@ -2,12 +2,12 @@ let t = 0;
 function f1() {
     t++;
     console.log(t);
-    if (t === 100) return;
+    if (t === 9) return console.error('!the end!'.toUpperCase());
     f1();
 }
-
 // f1();
-// цикл
+
+//! цикл
 function f2() {
     let out = '';
     for (let i = 1; i <= 30; i++) {
@@ -15,12 +15,12 @@ function f2() {
     }
     console.log(out);
 }
-
 // f2();
-// рекурсией
+
+//! рекурсией
 let i = 0;
 let out = '';
-function f3() {
+function f3 () {
     i++;
     out += i + ' ';
     if (i >= 30) return;
@@ -29,39 +29,38 @@ function f3() {
 // f3();
 // console.log(out);
 
-// лицо с низкой социальной отв...
+//! лицо с низкой социальной ответственностью...
 function randomInteger(min, max) {
-    // случайное число от min до (max+1)
+//! случайное число от min до (max+1)
     let rand = min + Math.random() * (max + 1 - min);
     return Math.floor(rand);
 }
 
-let s1 = 0;
+let sum = 0;
 function moneyRecursion() {
     let m = randomInteger(0, 100);
     console.log('add: ' + m);
-    s1 += m;
-    console.log('sum: ' + s1);
-    if (s1 >= 300) return;
+    sum += m;
+    console.log('sum: ' + sum);
+    if (sum >= 300) return;
     moneyRecursion();
 }
-
 // moneyRecursion();
 
 function moneyCycle() {
-    let s2 = 0;
-    while (true) {
+    let sumCycle = 0;
+    // for (let i = 0; true; i++) {
+    while(true) {
         let m = randomInteger(0, 100);
         console.log('add: ' + m);
-        s2 += m;
-        console.log('sum: ' + s2);
-        if (s2 >= 300) return;
+        sumCycle += m;
+        console.log('sum: ' + sum);
+        if(sumCycle >= 100) return;
     }
 }
-
 // moneyCycle();
 
-// const 
+
 const users = {
     "ivanov": {
         age: 25,
@@ -91,7 +90,10 @@ const users = {
         age: 56,
         parent: {
             "ignatenko": {
-
+                age: 44, 
+                parent: {
+                    "kuzkin": {}
+                }
             },
             "sniezko": {
                 age: 45
@@ -100,8 +102,12 @@ const users = {
     }
 }
 
+for (let key in users) {
+    userParentRecursion(users[key]);
+    // console.log(key);
+}
 function userParentRecursion(obj) {
-    if (obj.parent !== undefined) {
+    if(obj.parent !== undefined) {
         for (let key in obj.parent) {
             console.log(key);
             userParentRecursion(obj.parent[key]);
@@ -109,17 +115,14 @@ function userParentRecursion(obj) {
     }
 }
 
-// for (let key in users) {
-//     userParentRecursion(users[key]);
-// }
 
 let position = 0;
-// document.querySelector('.block').addEventListener('click', () => {
-//     for (let i = 0; i < 400; i++) {
-//         position++;
-//         document.querySelector('.block').style.left = position + 'px';
-//     }
-// });
+document.querySelector('.block').addEventListener('click', () => {
+    for (let i = 0; i < 600; i++) {
+        position++;
+        document.querySelector('.block').style.left = position + 'px';
+    }
+});
 
 function recursionAnimation() {
     position = position + 5;
@@ -134,33 +137,23 @@ function animation() {
 
 // animation();
 
-// 1 * 2*3 5
 
-function fact1(n) {
+//! вычисление факториала 
+// с помощью цикла
+function factorial1(n) {
     let s = 1;
     for (let i = 1; i <= n; i++) {
-        s = s * i;
+        s *= i;
+        console.log(s);
     }
-    console.log(s);
 }
-// fact1(5);
+factorial1(5);
 
 let s = 1;
-function fact2(n) {
+function factorial2(n) {
     if (n === 0) return;
     s = s * n;
-    fact2(n - 1);
+    factorial2(n - 1);
 }
-// fact2(5);
-// console.log(s);
-
-const tree = document.querySelector('.test');
-// console.log(tree);
-
-function treeTravelsal(elem) {
-    let innerElements = elem.children;
-    console.dir(elem);
-    Array.from(innerElements).forEach(item => treeTravelsal(item));
-}
-
-treeTravelsal(tree);
+factorial2(5);
+console.log(s);
