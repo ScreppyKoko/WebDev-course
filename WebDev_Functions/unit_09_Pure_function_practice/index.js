@@ -1,97 +1,49 @@
-// Pure функции
+const user = {
+    age: 19, 
+    password: 'qwrty321',
+    agreeToTerms: true
+};
 
-function squad (n) {
-    return n**2;
+const user2 = {
+    age: 19, 
+    password: 'qwrty321',
+    agreeToTerms: false
+};
+
+function checkAge(user) {
+    return user.age > 18;
 }
 
-// console.log(squad(4));
+// console.log(checkAge(user));
 
-function squad2(n) {
-    document.querySelector('.out-1').textContent = squad(n);
+function checkPass(user) {
+    return user.password.length >= 8;
 }
 
-// squad2(5);
-
-let count = 0;
-
-function myCount(){
-    return count++;
+function checkTerms(user) {
+    return user.agreeToTerms === true;
 }
 
-// console.log(myCount());
-// console.log(myCount());
-// console.log(myCount());
-
-function showAlert(){
-    alert('Hello');
+function validate(obj, ...func) {
+    for (let i = 0; i < func.length; i++) {
+        if (func[i](obj) === false) return false;
+    }
+    return true;
 }
 
-// showAlert();
+console.log(validate(user, checkAge, checkPass, checkTerms));
 
-function randomInt(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
+function createValidator(...func) {
+    return function (obj) {
+        for (let i = 0; i < func.length; i++) {
+            if (func[i](obj) === false) return false;
+        }
+        return true;
+    };
 }
 
-// for (let i = 0; i < 20; i++) {
-//     console.log(randomInt(10,20));
-// }
+const validator1 = createValidator(checkAge, checkPass, checkTerms);
+const validator2 = createValidator(checkAge, checkPass);
 
-function year(d){
-    let today = new Date();
-    let year = today.getFullYear()
-    return (year - d);
-}
-
-console.log(year(2005));
-
-function show(d){
-    console.log(d);
-}
-
-// show(4444);
-
-function hello(){
-    console.log('hello');
-}
-hello.hi = 123;
-
-console.log(hello.hi);
-
-function pOdd() {
-    console.log('odd');
-}
-
-function pEven() {
-    console.log('even');
-}
-
-function myNumber(n, odd, even) {
-    if (n % 2 === 0) return even;
-    else return odd;
-}
-
-let z = myNumber(6, pOdd, pEven);
-// console.log(z);
-z();
-
-const w = [
-    { name: "Ivan", "age" : 25},
-    { name: "Serg", "age" : 35},
-    { name: "Olga", "age" : 27},
-];
-
-let w1 = [];
-for (let i = 0; i < w.length; i++) {
-    if (w[i].age >= 26) w1.push(w[i]);
-}
-console.log(w1);
-
-w1 = w.filter(mySort);
-
-function mySort(item) {
-    if(item.age >= 26) return true;
-}
-console.log(w1);
-
-w1 = w.filter(item => (item.age >= 26));
-console.log(w1);
+console.log(validator1(user2));
+console.log(validator2(user2));
