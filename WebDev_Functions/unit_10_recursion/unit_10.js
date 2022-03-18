@@ -1,18 +1,21 @@
 // Task 1
 // Функция принимает число n. Напишите рекурсивную функцию r1, которая выводит числа от n до нуля в out-1. Разделитель - пробел.
 
-function t1(n) {
+function t1(z) {
     let out = '';
-
-    function r1(z) {
-
+    function r1(n) {
+        out += n + ' ';
+        if (n <= 0) return;
+        n--;
+        r1(n);
     }
-
+    r1(z);
+    document.querySelector('.out-1').textContent = out;
 }
 
 document.querySelector('.b-1').addEventListener('click', () => {
     t1(5);
-})
+});
 
 
 
@@ -22,16 +25,20 @@ document.querySelector('.b-1').addEventListener('click', () => {
 
 function t2(n) {
     let out = '';
-
+    let num = 0;
     function r2(z) {
-
+        out += num + ' ';
+        if (num >= z) return;
+        num += 2;
+        r2(z);
     }
-
+    r2(n);
+    document.querySelector('.out-2').textContent = out;
 }
 
 document.querySelector('.b-2').addEventListener('click', () => {
-    t2(5);
-})
+    t2(9);
+});
 
 // Task 3.
 // Функция t3 принимает аргумент 'odd' или 'even' и должна возвратить четное или не четное число в диапазоне от 0 до 100. Решите задачу рекурсивно. Для генерации случайных чисел используйте функцию randomInteger.
