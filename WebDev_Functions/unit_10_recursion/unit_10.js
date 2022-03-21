@@ -48,21 +48,37 @@ function randomInteger(min, max) {
     return Math.floor(rand);
 }
 
-function t3(arg) {
 
+//! перепроверить, вывод хромает!
+function t3(arg) {
+    let randomNum = randomInteger(0, 100);
+    if (arg === 'even' && randomNum % 2 === 0) {
+        console.log(randomNum);
+        return randomNum;
+    }
+    else if (arg === 'odd' && randomNum % 2 !== 0) {
+        console.log(randomNum);
+        return randomNum;
+    }
+    else t3(arg);
 }
 
 document.querySelector('.b-3').addEventListener('click', () => {
-    document.querySelector('.out-3').textContent = t3('even');
+    document.querySelector('.out-3').innerHTML = t3('even');
 });
 
 // Task 4.
-// Функция t4 с помощью randomInteger генерирует случайное число от 0 до 10 и проверяет его наличие в массиве ar4. Если число уже есть - выполняет генерацию заново. Если нет - возвращает это число.
+// Функция t4 с помощью randomInteger генерирует случайное число от 0 до 10 и проверяет его наличие в массиве ar4. 
+// Если число уже есть - выполняет генерацию заново. Если нет - возвращает это число.
 
-let ar4 = [3, 4, 6, 7, 8];
+//! перепроверить, не проходит решение  
+let ar4 = [0, 1, 2, 3, 4, 6, 7, 8, 9];
 
 function t4() {
-
+    let randomNum = randomInteger(0, 10);
+    console.log(randomNum)
+    if (ar4.includes(randomNum)) t4();
+    else return randomNum;
 }
 
 document.querySelector('.b-4').addEventListener('click', () => {
@@ -70,12 +86,19 @@ document.querySelector('.b-4').addEventListener('click', () => {
 });
 
 // Task 5.
-// Напишите рекурсивную функцию t5, которая генерирует целое число от 0 до 10 ( с помощью randomInteger) и добавляем его в массив ar5. Проверяет, если сумма элементов массива больше 30 - то прекращает свою работу, если меньше - запускается заново. Возвращает массив ar5 по результату работы.
+// Напишите рекурсивную функцию t5, которая генерирует целое число от 0 до 10 ( с помощью randomInteger) и добавляем его в массив ar5. 
+// Проверяет, если сумма элементов массива больше 30 - то прекращает свою работу, если меньше - запускается заново. 
+// Возвращает массив ar5 по результату работы.
 
 let ar5 = [];
 
 function t5() {
-
+    ar5.push(randomInteger(0, 10));
+    console.log(ar5)
+    let sum = 0;
+    ar5.map(item => sum += item);
+    if (sum >= 30) return;
+    else t5();
 }
 
 document.querySelector('.b-5').addEventListener('click', () => {
@@ -127,7 +150,9 @@ document.querySelector('.b-7').addEventListener('click', () => {
 
 
 // Task 8.
-// Напишите рекурсивную функцию t8, которая получает с помощью randomInt целое число от 1000 до 9000 и проверяет если сумма первых двух цифр числа равна сумме 3 и 4 числа то возвращает это число. Если нет - повторяет операцию. Например число 1235 не удовлетворяет этому условию, потому что 1+2 не равно 3+5. А вот число 7180  - удовлетворяет.
+// Напишите рекурсивную функцию t8, которая получает с помощью randomInt целое число от 1000 до 9000 и проверяет 
+// если сумма первых двух цифр числа равна сумме 3 и 4 числа то возвращает это число. Если нет - повторяет операцию. 
+// Например число 1235 не удовлетворяет этому условию, потому что 1+2 не равно 3+5. А вот число 7180  - удовлетворяет.
 
 function t8() {
 
