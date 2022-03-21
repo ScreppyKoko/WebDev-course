@@ -20,18 +20,18 @@ function f2() {
 //! рекурсией
 let i = 0;
 let out = '';
-function f3 () {
+function f3() {
     i++;
     out += i + ' ';
     if (i >= 30) return;
     f3();
 }
 // f3();
-// console.log(out);
+// console.log(out); 
 
 //! лицо с низкой социальной ответственностью...
 function randomInteger(min, max) {
-//! случайное число от min до (max+1)
+    //! случайное число от min до (max+1)
     let rand = min + Math.random() * (max + 1 - min);
     return Math.floor(rand);
 }
@@ -50,12 +50,12 @@ function moneyRecursion() {
 function moneyCycle() {
     let sumCycle = 0;
     // for (let i = 0; true; i++) {
-    while(true) {
+    while (true) {
         let m = randomInteger(0, 100);
         console.log('add: ' + m);
         sumCycle += m;
         console.log('sum: ' + sum);
-        if(sumCycle >= 100) return;
+        if (sumCycle >= 100) return;
     }
 }
 // moneyCycle();
@@ -90,7 +90,7 @@ const users = {
         age: 56,
         parent: {
             "ignatenko": {
-                age: 44, 
+                age: 44,
                 parent: {
                     "kuzkin": {}
                 }
@@ -107,7 +107,7 @@ for (let key in users) {
     // console.log(key);
 }
 function userParentRecursion(obj) {
-    if(obj.parent !== undefined) {
+    if (obj.parent !== undefined) {
         for (let key in obj.parent) {
             console.log(key);
             userParentRecursion(obj.parent[key]);
